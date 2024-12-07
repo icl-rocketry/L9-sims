@@ -76,7 +76,7 @@ def drogue_trigger(p, h, y):
     return True if y[5] < 0 else False
 
 def main_trigger(p, h, y):
-    return True if y[5] < 0 and h < 500 else False
+    return True if y[5] < 0 and h < 7000 else False
 
 main = NimbusDescent.add_parachute(
     name="main",
