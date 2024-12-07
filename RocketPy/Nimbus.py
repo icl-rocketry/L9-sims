@@ -18,7 +18,7 @@ Nimbus = Rocket(
     inertia=(58.1, 58.1, 0.231),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor=4.28 - 2.3,
+    center_of_mass_without_motor= 4.31 - 2.64,
     coordinate_system_orientation="tail_to_nose",
 )
 
@@ -28,14 +28,14 @@ NimbusDescent = Rocket(
     inertia=(42.2, 42.2, 0.222),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor=4.28 - 2.24,
+    center_of_mass_without_motor=4.31 - 2.64,
     coordinate_system_orientation="tail_to_nose",
 )
 
 Nimbus.add_motor(Thanos_R, position=0)
 
-nose_cone = Nimbus.add_nose(length=0.5, kind="ogive", position=4.08)
-nose_cone2 = NimbusDescent.add_nose(length=0.5, kind="ogive", position=4.08)
+nose_cone = Nimbus.add_nose(length=0.7, kind="ogive", position=4.31)
+nose_cone2 = NimbusDescent.add_nose(length=0.7, kind="ogive", position=4.31)
 
 
 fins = Nimbus.add_trapezoidal_fins(
@@ -62,8 +62,8 @@ fins2 = NimbusDescent.add_trapezoidal_fins(
 
 
 
-boattail = Nimbus.add_tail(top_radius=0.1, bottom_radius=0.0821, length=0.302, position=0.302)
-boattail2 = NimbusDescent.add_tail(top_radius=0.1, bottom_radius=0.0821, length=0.302, position=0.302)
+boattail = Nimbus.add_tail(top_radius=0.1, bottom_radius=0.0821, length=0.41, position=0.42)
+boattail2 = NimbusDescent.add_tail(top_radius=0.1, bottom_radius=0.0821, length=0.41, position=0.42)
 
 # rail buttons?
 Nimbus.set_rail_buttons(
@@ -80,11 +80,11 @@ def main_trigger(p, h, y):
 
 main = NimbusDescent.add_parachute(
     name="main",
-    cd_s=29.128,
+    cd_s=15.5509,
     trigger=main_trigger,
     sampling_rate=100,
     lag=7,
-    noise = (0, 8.3, 0.5),
+    noise = (0, 0, 0), # Set to 0, noise simulates pressure sensor which is not implemented in this sim
 )
 
 # add reefing to main parachute with a drogue
@@ -94,7 +94,7 @@ drogue = NimbusDescent.add_parachute(
     trigger=drogue_trigger,
     sampling_rate=100,
     lag=0,
-    noise = (0, 8.3, 0.5),
+    noise = (0, 0, 0), # Set to 0, noise simulates pressure sensor which is not implemented in this sim
 )
 
 # we only want to run this if we are running this file specifically as a nominal sim
