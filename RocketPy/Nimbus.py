@@ -21,7 +21,7 @@ Nimbus = Rocket(
     inertia=(69.032, 69.032, 0.417),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor= 4.31 - 2.64,
+    center_of_mass_without_motor= 4.31 - 2.48,
     coordinate_system_orientation="tail_to_nose",
 )
 
@@ -31,7 +31,7 @@ NimbusDescent = Rocket(
     inertia=(59.121, 59.121, 0.298 ),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor=4.31 - 2.64,
+    center_of_mass_without_motor=4.31 - 2.48,
     coordinate_system_orientation="tail_to_nose",
 )
 
