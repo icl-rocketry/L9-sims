@@ -16,9 +16,9 @@ import datetime
 # NimbusEmpty has no payload and is used on the descent
 # the individual payload + parafoil is not simulated, that's for our guided recovery sim
 Nimbus = Rocket(
-    radius=0.095,
-    mass=35.793,  # mass is excluding tanks and engine
-    inertia=(58.1, 58.1, 0.231),
+    radius=0.1,
+    mass=54.647,  # mass is excluding tanks and engine
+    inertia=(69.032, 69.032, 0.417),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
     center_of_mass_without_motor= 4.31 - 2.64,
@@ -26,9 +26,9 @@ Nimbus = Rocket(
 )
 
 NimbusDescent = Rocket(
-    radius=0.095,
-    mass=49.892,  # mass is excluding tanks and engine
-    inertia=(42.2, 42.2, 0.222),
+    radius=0.1,
+    mass=54.647,  # mass is excluding tanks and engine
+    inertia=(59.121, 59.121, 0.298 ),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
     center_of_mass_without_motor=4.31 - 2.64,
