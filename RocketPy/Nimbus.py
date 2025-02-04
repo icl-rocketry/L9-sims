@@ -37,15 +37,15 @@ NimbusDescent = Rocket(
 
 Nimbus.add_motor(Thanos_R, position=0)
 
-nose_cone = Nimbus.add_nose(length=0.7, kind="ogive", position=4.31)
-nose_cone2 = NimbusDescent.add_nose(length=0.7, kind="ogive", position=4.31)
+nose_cone = Nimbus.add_nose(length=0.7, kind="lvhaack", position=4.31)
+nose_cone2 = NimbusDescent.add_nose(length=0.7, kind="lvhaack", position=4.31)
 
 
 fins = Nimbus.add_trapezoidal_fins(
     n=3,
     root_chord=0.36,
     tip_chord=0.16,
-    sweep_length=0.24,
+    sweep_length=0.25,
     span=0.25,
     position=0.36,
     cant_angle=0,
@@ -56,7 +56,7 @@ fins2 = NimbusDescent.add_trapezoidal_fins(
     n=3,
     root_chord=0.36,
     tip_chord=0.16,
-    sweep_length=0.24,
+    sweep_length=0.25,
     span=0.25,
     position=0.36,
     cant_angle=0,
