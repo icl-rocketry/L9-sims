@@ -24,16 +24,16 @@
       <BoattailLength>11.8</BoattailLength>
       <BoattailRearDiameter>4.92</BoattailRearDiameter>
       <BoattailOffset>0</BoattailOffset>
-      <Overhang>9.947</Overhang>
+      <Overhang>9.546999</Overhang>
       <Fin>
         <Count>3</Count>
         <Chord>16.147</Chord>
-        <Span>8.07</Span>
+        <Span>8.27</Span>
         <SweepDistance>11.84</SweepDistance>
         <TipChord>6.3</TipChord>
         <Thickness>0.2362</Thickness>
         <LERadius>0</LERadius>
-        <Location>6.2</Location>
+        <Location>6.6</Location>
         <AirfoilSection>Hexagonal</AirfoilSection>
         <FX1>1</FX1>
         <FX3>1</FX3>
@@ -108,9 +108,9 @@
       <Booster2NozzleDiameter>0</Booster2NozzleDiameter>
       <IncludeBooster2>False</IncludeBooster2>
       <FlightTime>0</FlightTime>
-      <TimetoApogee>43.08878</TimetoApogee>
-      <MaxAltitude>30059.15</MaxAltitude>
-      <MaxVelocity>1693.735</MaxVelocity>
+      <TimetoApogee>43.01879</TimetoApogee>
+      <MaxAltitude>29976.9</MaxAltitude>
+      <MaxVelocity>1692.441</MaxVelocity>
       <OptimumWt>0</OptimumWt>
       <OptimumMaxAlt>0</OptimumMaxAlt>
     </Simulation>
