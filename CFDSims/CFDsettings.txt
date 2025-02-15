@@ -1,0 +1,43 @@
+- Mesh Size setting
+	-> Boundary Surface Control
+		|-> Prism Layers, disable
+		|-> Minimum Surface Size, custom, 400
+		|-> Target Surface Size, custom, 1600
+	
+	-> Backend
+		|-> Tagrt Surface size, custom, 25
+		|-> Minimum Surface size, custom, 2.5
+		
+	-> Plane
+		|-> Target Surface Size, custom, 1600
+	
+	-> Wake Refinement
+		|-> Wake refinement: 2 deg
+		|-> Growth Rate: 1.05
+		
+- Continua
+	-> Selected models
+		|-> Coupled Energy
+		|-> Gradients
+		|-> Coupled flow
+		|-> All y+ wall treatment
+		|-> Wall distance
+		|-> Spalart Allmaras
+		|-> Turbulent
+		|-> Ideal Gas
+		|-> Steady
+		
+	-> Reference Values
+		|-> Reference Pressure: 74979.21
+	
+	-> Initial Conditions
+		|-> See the Turbulent Boundary Conditions excel
+		
+	
+- Region
+	-> Inlet, mass flow inlet
+		|-> A = 0.5
+		|-> Vel = 439.695
+		|-> rho = 0.96
+		
+		|-> ... mdot = 209.6

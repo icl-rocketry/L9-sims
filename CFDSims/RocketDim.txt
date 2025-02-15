@@ -1,0 +1,38 @@
+360 body
+20 width
+70 height
+
+Main body dimensions
+	excludes the rocket exotic geometry (nose and boattail)
+	329.1 cm
+	3291 mm height
+	200 mm diameter
+
+Nose
+	import from CAD library
+
+fin
+	pos cm
+		383
+	shape (cm)
+		0, 0
+		30, 21
+		46, 21
+		41, -3.11
+
+
+boat tail
+	fore 30
+	aft 12.5
+	length 30
+
+Raceway 1, Fuel Tank
+	position 2380 mm
+	length 288 mm
+		
+Raceway 2, Oxygen Tank
+	position 2920 mm
+	length 719 mm
+	
+Raceway angle for both: 12 degree max
+	This is for mach 1.5
