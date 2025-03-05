@@ -40,7 +40,7 @@
       </Fin>
       <Protuberance>
         <StreamlinedNoBaseDrag>1.5</StreamlinedNoBaseDrag>
-        <StreamlinedWithBaseDrag>0</StreamlinedWithBaseDrag>
+        <StreamlinedWithBaseDrag>10.5</StreamlinedWithBaseDrag>
         <InclinedPlate1Angle>0</InclinedPlate1Angle>
         <InclinedPlate1FrontalArea>0</InclinedPlate1FrontalArea>
         <InclinedPlate2Angle>0</InclinedPlate2Angle>
@@ -92,9 +92,9 @@
   <SimulationList>
     <Simulation>
       <SustainerEngine>RL1  (ICLR)</SustainerEngine>
-      <SustainerLaunchWt>160.36</SustainerLaunchWt>
+      <SustainerLaunchWt>170.28</SustainerLaunchWt>
       <SustainerNozzleDiameter>3.54</SustainerNozzleDiameter>
-      <SustainerCG>102.36</SustainerCG>
+      <SustainerCG>101.75</SustainerCG>
       <SustainerIgnitionDelay>0</SustainerIgnitionDelay>
       <Booster1LaunchWt>0</Booster1LaunchWt>
       <Booster1SeparationDelay>0</Booster1SeparationDelay>
@@ -108,9 +108,9 @@
       <Booster2NozzleDiameter>0</Booster2NozzleDiameter>
       <IncludeBooster2>False</IncludeBooster2>
       <FlightTime>0</FlightTime>
-      <TimetoApogee>43.01879</TimetoApogee>
-      <MaxAltitude>29976.9</MaxAltitude>
-      <MaxVelocity>1692.441</MaxVelocity>
+      <TimetoApogee>40.51921</TimetoApogee>
+      <MaxAltitude>26180.62</MaxAltitude>
+      <MaxVelocity>1548.262</MaxVelocity>
       <OptimumWt>0</OptimumWt>
       <OptimumMaxAlt>0</OptimumMaxAlt>
     </Simulation>
