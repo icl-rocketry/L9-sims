@@ -1,0 +1,15 @@
+Data for the conditions in burn out
+
+Mach 1.328
+Rocket Speed 439.827
+Freestream Velocity 439.695
+Altitude 2469.949
+Kinetic Energy Burn Out: 4.984e+06
+
+T = 275
+Cs = 332.79
+rho = 0.96
+sigma = 0.7836
+p/p0 = 0.7400
+p_atm = 74979.21
+mu = 1.716 x10^-5

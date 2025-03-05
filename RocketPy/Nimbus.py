@@ -18,7 +18,7 @@ import datetime
 Nimbus = Rocket(
     radius=0.1,
     mass=48.406,  # mass is excluding tanks and engine
-    inertia=(69.032, 69.032, 0.417),
+    inertia=(66.8, 66.8, 0.385),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
     center_of_mass_without_motor= 4.31 - 2.48,
@@ -28,7 +28,7 @@ Nimbus = Rocket(
 NimbusDescent = Rocket(
     radius=0.1,
     mass=48.406,  # mass is excluding tanks and engine
-    inertia=(59.121, 59.121, 0.298 ),
+    inertia=(55.821, 55.821, 0.265 ),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
     center_of_mass_without_motor=4.31 - 2.48,
@@ -37,30 +37,30 @@ NimbusDescent = Rocket(
 
 Nimbus.add_motor(Thanos_R, position=0)
 
-nose_cone = Nimbus.add_nose(length=0.7, kind="ogive", position=4.31)
-nose_cone2 = NimbusDescent.add_nose(length=0.7, kind="ogive", position=4.31)
+nose_cone = Nimbus.add_nose(length=0.7, kind="lvhaack", position=4.31)
+nose_cone2 = NimbusDescent.add_nose(length=0.7, kind="lvhaack", position=4.31)
 
 
 fins = Nimbus.add_trapezoidal_fins(
     n=3,
-    root_chord=0.36,
+    root_chord=0.4411,
     tip_chord=0.16,
-    sweep_length=0.24,
-    span=0.25,
-    position=0.36,
+    sweep_length=0.30,
+    span=0.21,
+    position=0.46,
     cant_angle=0,
-    radius=0.082,
+    radius=0.1,
 )
 
 fins2 = NimbusDescent.add_trapezoidal_fins(
     n=3,
-    root_chord=0.36,
+    root_chord=0.4411,
     tip_chord=0.16,
-    sweep_length=0.24,
-    span=0.25,
-    position=0.36,
+    sweep_length=0.30,
+    span=0.21,
+    position=0.46,
     cant_angle=0,
-    radius=0.082,
+    radius=0.1,
 )
 
 
@@ -114,8 +114,8 @@ if __name__ == "__main__":
     Nimbus.draw()
 
     # Flights
-    Ascent = Flight(rocket=Nimbus, environment=env, rail_length=12, inclination=86, heading=0, terminate_on_apogee=True, name="Ascent")
-    Descent = Flight(rocket=NimbusDescent, environment=env, rail_length=12, inclination=0, heading=0, initial_solution=Ascent, name="Descent")
+    Ascent = Flight(rocket=Nimbus, environment=env, rail_length=12, inclination=86, heading=130, terminate_on_apogee=True, name="Ascent")
+    Descent = Flight(rocket=NimbusDescent, environment=env, rail_length=12, inclination=0, heading=130, initial_solution=Ascent, name="Descent")
 
     # Results
     comparison = CompareFlights([Ascent, Descent])
