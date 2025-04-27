@@ -28,3 +28,27 @@ RL1645 102 300 4-6-8 24.3 24.3 ICLR
 8.9 4500.00
 9.0 0.0
 ;
+; @File: HYP1.eng, @Pts-I: 3, @Pts-O: 3, @Sm: 0, @CO: 5%
+; @TI: 13248.75, @TIa: 13248.12, @TIe: 0.0%, @ThMax: 2000.0, @ThAvg: 1903.009, @Tb: 6.962
+; Exported using ThrustCurveTool, www.ThrustGear.com
+RLFucked 102 300 4-6-8 46.8 46.8 ICLR
+0.50 10000.00
+8.5 10000
+9.0 0.0
+;
+; @File: HYP1.eng, @Pts-I: 3, @Pts-O: 3, @Sm: 0, @CO: 5%
+; @TI: 13248.75, @TIa: 13248.12, @TIe: 0.0%, @ThMax: 2000.0, @ThAvg: 1903.009, @Tb: 6.962
+; Exported using ThrustCurveTool, www.ThrustGear.com
+RLFucked2 102 300 4-6-8 46.8 46.8 ICLR
+0.50 7000.00
+12.5 7000
+13 0.0
+;
+; @File: HYP1.eng, @Pts-I: 3, @Pts-O: 3, @Sm: 0, @CO: 5%
+; @TI: 13248.75, @TIa: 13248.12, @TIe: 0.0%, @ThMax: 2000.0, @ThAvg: 1903.009, @Tb: 6.962
+; Exported using ThrustCurveTool, www.ThrustGear.com
+RLFucked3 102 300 4-6-8 73.19 73.19 ICLR
+0.50 8000.00
+17.5 8000
+18 0.0
+;
