@@ -9,8 +9,8 @@ os.chdir("..")
 # Define fluids
 ox_liq = Fluid(name="nitrous_l", density=1220)
 ox_gas = Fluid(name="nitrous_g", density=1.977)
-fuel_liq = Fluid(name="methanol_l", density=792.2)
-fuel_gas = Fluid(name="methanol_g", density=1.206)
+fuel_liq = Fluid(name="ethanol_l", density=789)
+fuel_gas = Fluid(name="ethanol_g", density=0.79)
 press_liq = Fluid(name="nitrogen_l", density=807)
 press_gas = Fluid(name="nitrogen_g", density=1.251)
 
