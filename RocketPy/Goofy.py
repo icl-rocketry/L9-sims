@@ -65,7 +65,7 @@ press_tank = MassFlowRateBasedTank(
 
 # Define motor
 # if the thrust curve is changed, define a specific impulse variable so we can calculate the mass flow rate of the propellants
-Thanos_R = LiquidMotor(
+Goofy = LiquidMotor(
     thrust_source="rocketpy/ThanosR40.eng",
     dry_mass=3.1, # mass of engine, not tanks!
     dry_inertia=(0.6050, 0.6094, 0.1004),
@@ -75,6 +75,6 @@ Thanos_R = LiquidMotor(
     burn_time=9.94,
     coordinate_system_orientation="nozzle_to_combustion_chamber",
 )
-Thanos_R.add_tank(tank=ox_tank, position=4.31 - 2.92 - 0.719/2)
-Thanos_R.add_tank(tank=fuel_tank, position=4.31 - 2.32 - 0.288/2)
-Thanos_R.add_tank(tank=press_tank, position=4.31 - 1.59 - 0.56/2)
+Goofy.add_tank(tank=ox_tank, position=4.31 - 2.92 - 0.719/2)
+Goofy.add_tank(tank=fuel_tank, position=4.31 - 2.32 - 0.288/2)
+Goofy.add_tank(tank=press_tank, position=4.31 - 1.59 - 0.56/2)

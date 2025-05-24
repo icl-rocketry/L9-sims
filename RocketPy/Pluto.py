@@ -8,14 +8,13 @@ os.chdir("..")
 # imports
 from rocketpy.plots.compare import CompareFlights
 from rocketpy import Environment, Flight, Rocket
-from Thanos import Thanos_R
+from Goofy import Goofy
 import datetime
 
 
 # Rocket
 # Pluto includes payload and is used on the ascent
-# PlutoEmpty has no payload and is used on the descent
-# the individual payload + parafoil is not simulated, that's for our guided recovery sim
+# PlutoDescent has no payload and is used on the descent
 Pluto = Rocket(
     radius=0.0925,
     mass=53.866,  # mass is excluding tanks and engine
@@ -36,7 +35,7 @@ PlutoDescent = Rocket(
     coordinate_system_orientation="tail_to_nose",
 )
 
-Pluto.add_motor(Thanos_R, position=0)
+Pluto.add_motor(Goofy, position=0)
 
 nose_cone = Pluto.add_nose(length=0.7, kind="lvhaack", position=4.31)
 nose_cone2 = PlutoDescent.add_nose(length=0.7, kind="lvhaack", position=4.31)
@@ -48,7 +47,7 @@ fins = Pluto.add_trapezoidal_fins(
     tip_chord=0.16,
     sweep_length=0.30,
     span=0.22,
-    position=0.46,
+    position=0.7,
     cant_angle=0,
     radius=0.1,
 )
@@ -59,7 +58,7 @@ fins2 = PlutoDescent.add_trapezoidal_fins(
     tip_chord=0.16,
     sweep_length=0.30,
     span=0.22,
-    position=0.46,
+    position=0.7,
     cant_angle=0,
     radius=0.1,
 )
@@ -87,8 +86,8 @@ main = PlutoDescent.add_parachute(
     cd_s=14.612,
     trigger=main_trigger,
     sampling_rate=100,
-    lag=7,
-    noise = (0, 0, 0), # Set to 0, noise simulates pressure sensor which is not implemented in this sim
+    lag=0,
+    noise = (0, 0, 0),
 )
 
 # add reefing to main parachute with a drogue
@@ -97,8 +96,8 @@ drogue = PlutoDescent.add_parachute(
     cd_s=0.98033,
     trigger=drogue_trigger,
     sampling_rate=100,
-    lag=0,
-    noise = (0, 0, 0), # Set to 0, noise simulates pressure sensor which is not implemented in this sim
+    lag=2,
+    noise = (0, 0, 0),
 )
 
 # we only want to run this if we are running this file specifically as a nominal sim
@@ -107,7 +106,7 @@ if __name__ == "__main__":
 
     # Environment
     env = Environment(latitude=39.4751, longitude=-8.3764, elevation=0)
-    envtime = datetime.date.today() + datetime.timedelta(days = 1)
+    envtime = datetime.date.today() + datetime.timedelta(days = 1)  # tomorrow
     env.set_date((envtime.year, envtime.month, envtime.day, 12))  # UTC time
     env.set_atmospheric_model(type="Forecast", file="GFS")
 
@@ -115,20 +114,22 @@ if __name__ == "__main__":
     Pluto.draw()
 
     # Flights
-    Ascent = Flight(rocket=Pluto, environment=env, rail_length=12, inclination=86, heading=130, terminate_on_apogee=True, name="Ascent")
-    Descent = Flight(rocket=PlutoDescent, environment=env, rail_length=12, inclination=0, heading=130, initial_solution=Ascent, name="Descent")
+    Ascent = Flight(rocket=Pluto, environment=env, rail_length=12, inclination=84, heading=133, terminate_on_apogee=True, name="Ascent")
+    Descent = Flight(rocket=PlutoDescent, environment=env, rail_length=0.01, inclination=0, heading=133, initial_solution=Ascent, name="Descent")
 
     # Results
     comparison = CompareFlights([Ascent, Descent])
     comparison.trajectories_3d(legend=True)
 
-    print("----- ENV INFO -----")
-    env.all_info()
-    print("----- THANOS INFO -----")
-    Thanos_R.all_info()
-    print("----- PLUTO INFO -----")
-    Pluto.all_info()
-    print("----- ASCENT INFO -----")
-    Ascent.all_info()
-    print("----- DESCENT INFO -----")
+    # print("----- ENV INFO -----")
+    # env.all_info()
+    # print("----- THANOS INFO -----")
+    # Thanos_R.all_info()
+    # print("----- PLUTO INFO -----")
+    # Pluto.all_info()
+    # print("----- ASCENT INFO -----")
+    # Ascent.all_info()
+
+    # simple info without all the plots
+    Ascent.info()
     Descent.info()
