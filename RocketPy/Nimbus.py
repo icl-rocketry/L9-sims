@@ -6,7 +6,8 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 os.chdir("..")
 
 # imports
-from rocketpy import Environment, Rocket, Flight, CompareFlights
+from rocketpy.plots.compare import CompareFlights
+from rocketpy import Environment, Flight, Rocket
 from Thanos import Thanos_R
 import datetime
 
