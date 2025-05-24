@@ -8,7 +8,7 @@ os.chdir("..")
 # imports
 from rocketpy.plots.compare import CompareFlights
 from rocketpy import Environment, Flight, Rocket
-from Thanos import Thanos_R
+from Goofy import Goofy
 import datetime
 
 
@@ -35,7 +35,7 @@ PlutoDescent = Rocket(
     coordinate_system_orientation="tail_to_nose",
 )
 
-Pluto.add_motor(Thanos_R, position=0)
+Pluto.add_motor(Goofy, position=0)
 
 nose_cone = Pluto.add_nose(length=0.7, kind="lvhaack", position=4.31)
 nose_cone2 = PlutoDescent.add_nose(length=0.7, kind="lvhaack", position=4.31)
@@ -86,7 +86,7 @@ main = PlutoDescent.add_parachute(
     cd_s=14.612,
     trigger=main_trigger,
     sampling_rate=100,
-    lag=7,
+    lag=0,
     noise = (0, 0, 0),
 )
 
@@ -96,7 +96,7 @@ drogue = PlutoDescent.add_parachute(
     cd_s=0.98033,
     trigger=drogue_trigger,
     sampling_rate=100,
-    lag=0,
+    lag=2,
     noise = (0, 0, 0),
 )
 
