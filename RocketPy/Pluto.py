@@ -22,7 +22,7 @@ length = 4.51  # (m), to convert from openrocket layout to rocketpy coordinate s
 # main rocket used on ascent
 Pluto = Rocket(
     radius=0.0925,
-    mass=64.345,  # mass is excluding fuel, ox and nitrous
+    mass=61.09,  # mass is excluding fuel, ox and nitrous
     inertia=(80.5, 80.5, 0.288),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
@@ -34,11 +34,11 @@ Pluto = Rocket(
 # while the payload is still in the nose cone
 PlutoDescentPreDeployment = Rocket(
     radius=0.0925,
-    mass=56.471,  # mass is excluding fuel, ox and nitrous
+    mass=61.09,  # mass is excluding fuel, ox and nitrous
     inertia=(75.1, 75.1, 0.266),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor=length - 2.35,
+    center_of_mass_without_motor=length - 2.53,
     coordinate_system_orientation="tail_to_nose",
 )
 
