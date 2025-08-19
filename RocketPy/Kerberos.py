@@ -31,7 +31,7 @@ ox_tank = MassFlowRateBasedTank(
     initial_liquid_mass=16.06,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
-    liquid_mass_flow_rate_out=16.06 / 6.96,
+    liquid_mass_flow_rate_out=16.06 / 7.36,
     gas_mass_flow_rate_in=0,
     gas_mass_flow_rate_out=0,
     liquid=ox_liq,
@@ -45,7 +45,7 @@ fuel_tank = MassFlowRateBasedTank(
     initial_liquid_mass=5.35,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
-    liquid_mass_flow_rate_out=5.35 / 6.96,
+    liquid_mass_flow_rate_out=5.35 / 7.36,
     gas_mass_flow_rate_in=0,
     gas_mass_flow_rate_out=0,
     liquid=fuel_liq,
@@ -59,7 +59,7 @@ press_tank = MassFlowRateBasedTank(
     initial_liquid_mass=2.06,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
-    liquid_mass_flow_rate_out=2.06 / 6.96,
+    liquid_mass_flow_rate_out=2.06 / 7.36,
     gas_mass_flow_rate_in=0,
     gas_mass_flow_rate_out=0,
     liquid=press_liq,
@@ -76,9 +76,9 @@ Kerberos = LiquidMotor(
     nozzle_radius=0.025,
     center_of_dry_mass_position=1.0824,
     nozzle_position=0,
-    burn_time=6.95,
+    burn_time=7.35,
     coordinate_system_orientation="nozzle_to_combustion_chamber",
 )
-Kerberos.add_tank(tank=ox_tank, position=length - 2.94)
-Kerberos.add_tank(tank=fuel_tank, position=length - 3.56)
+Kerberos.add_tank(tank=ox_tank, position=length - 2.72)
+Kerberos.add_tank(tank=fuel_tank, position=length - 3.34)
 Kerberos.add_tank(tank=press_tank, position=length - 1.89)
