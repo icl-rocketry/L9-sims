@@ -76,10 +76,9 @@ fins = Pluto.add_trapezoidal_fins(
     root_chord=0.41,
     tip_chord=0.16,
     sweep_length=0.30,
-    span=0.23,
+    span=0.225,
     position=0.72,
     cant_angle=0,
-    radius=0.1,
     airfoil=("RocketPy/aerofoil.csv", "degrees"),
 )
 fins2 = PlutoDescentPreDeployment.add_trapezoidal_fins(
@@ -178,7 +177,9 @@ if __name__ == "__main__":
         terminate_on_apogee=True,
         name="Ascent",
     )
-    Ascent.all_info()  
+    Ascent.all_info()
+
+    Pluto.draw()
     '''
     Descent1 = Flight(
         rocket=PlutoDescentPreDeployment,

@@ -79,6 +79,6 @@ Kerberos = LiquidMotor(
     burn_time=7.35,
     coordinate_system_orientation="nozzle_to_combustion_chamber",
 )
-Kerberos.add_tank(tank=ox_tank, position=length - 2.72)
-Kerberos.add_tank(tank=fuel_tank, position=length - 3.34)
+Kerberos.add_tank(tank=ox_tank, position=length - 3.34)
+Kerberos.add_tank(tank=fuel_tank, position=length - 2.72)
 Kerberos.add_tank(tank=press_tank, position=length - 1.89)
