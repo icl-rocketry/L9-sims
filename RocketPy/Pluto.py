@@ -98,7 +98,7 @@ boattail2 = PlutoDescentPreDeployment.add_tail(top_radius=0.1, bottom_radius=0.0
 
 # fly-away launch lugs will be analysed in more detail in the technical report
 Pluto.set_rail_buttons(
-    upper_button_position=length - 1.2,  # above separation point
+    upper_button_position=length - 1.6,  # above n2 tank
     lower_button_position=length - 3.6,  # top of fin can
     angular_position=60,
 )
@@ -177,7 +177,8 @@ if __name__ == "__main__":
         terminate_on_apogee=True,
         name="Ascent",
     )
-    Ascent.all_info()
+    #Ascent.all_info()
+    Ascent.info()
 
     Pluto.draw()
     '''
