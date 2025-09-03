@@ -19,15 +19,15 @@ press_gas = Fluid(name="nitrogen_g", density=1.251)
 
 # Define tanks geometry
 # TODO: use custom endcaps if the geometry is not a perfect sphere
-ox_shape = CylindricalTank(radius=0.185 / 2, height=0.840, spherical_caps=True)
-fuel_shape = CylindricalTank(radius=0.185 / 2, height=0.404, spherical_caps=True)
+ox_shape = CylindricalTank(radius=0.185 / 2, height=0.840)
+fuel_shape = CylindricalTank(radius=0.185 / 2, height=0.404)
 press_shape = CylindricalTank(radius=0.157 / 2, height=0.535, spherical_caps=True)
 
 # Define tanks
 ox_tank = MassFlowRateBasedTank(
     name="oxidizer tank",
     geometry=ox_shape,
-    flux_time=6.95,
+    flux_time=7.36,
     initial_liquid_mass=16.06,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
@@ -41,7 +41,7 @@ ox_tank = MassFlowRateBasedTank(
 fuel_tank = MassFlowRateBasedTank(
     name="fuel tank",
     geometry=fuel_shape,
-    flux_time=6.95,
+    flux_time=7.36,
     initial_liquid_mass=5.35,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
@@ -55,7 +55,7 @@ fuel_tank = MassFlowRateBasedTank(
 press_tank = MassFlowRateBasedTank(
     name="nitrogen tank",
     geometry=press_shape,
-    flux_time=6.95,
+    flux_time=7.36,
     initial_liquid_mass=2.06,
     initial_gas_mass=0,
     liquid_mass_flow_rate_in=0,
@@ -69,7 +69,7 @@ press_tank = MassFlowRateBasedTank(
 # Define motor
 # if the thrust curve is changed, define a specific impulse variable so we can calculate the mass flow rate of the propellants
 Kerberos = LiquidMotor(
-    thrust_source="rocketpy/Kerberos_TC - Help.eng",
+    thrust_source="rocketpy/Kerberos_TC - Actual.eng",
     dry_mass=0,  # mass of engine, not tanks!
     #dry_inertia=(0.6050, 0.6094, 0.1004),
     dry_inertia=(0, 0, 0),

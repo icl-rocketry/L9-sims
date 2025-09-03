@@ -22,7 +22,7 @@ length = 4.51  # (m), to convert from openrocket layout to rocketpy coordinate s
 # main rocket used on ascent
 Pluto = Rocket(
     radius=0.0925,
-    mass=61.09,  # mass is excluding fuel, ox and nitrous
+    mass=59.09,  # mass is excluding fuel, ox and nitrous
     inertia=(80.5, 80.5, 0.288),
     power_off_drag="RocketPy/dragCurve.csv",
     power_on_drag="RocketPy/dragCurve.csv",
@@ -98,7 +98,7 @@ boattail2 = PlutoDescentPreDeployment.add_tail(top_radius=0.1, bottom_radius=0.0
 
 # fly-away launch lugs will be analysed in more detail in the technical report
 Pluto.set_rail_buttons(
-    upper_button_position=length - 1.6,  # above n2 tank
+    upper_button_position=length - 2.48,  # above fuel tank
     lower_button_position=length - 3.6,  # top of fin can
     angular_position=60,
 )
