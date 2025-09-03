@@ -99,7 +99,7 @@ boattail2 = PlutoDescentPreDeployment.add_tail(top_radius=0.1, bottom_radius=0.0
 # fly-away launch lugs will be analysed in more detail in the technical report
 Pluto.set_rail_buttons(
     upper_button_position=length - 2.48,  # above fuel tank
-    lower_button_position=length - 3.6,  # top of fin can
+    lower_button_position=length - 3.78,  # top of fin can
     angular_position=60,
 )
 
