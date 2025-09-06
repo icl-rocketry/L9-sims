@@ -69,7 +69,7 @@ press_tank = MassFlowRateBasedTank(
 # Define motor
 # if the thrust curve is changed, define a specific impulse variable so we can calculate the mass flow rate of the propellants
 Kerberos = LiquidMotor(
-    thrust_source="rocketpy/Kerberos_TC - Actual.eng",
+    thrust_source="rocketpy/Kerberos_TC.eng",
     dry_mass=0,  # mass of engine, not tanks!
     #dry_inertia=(0.6050, 0.6094, 0.1004),
     dry_inertia=(0, 0, 0),
