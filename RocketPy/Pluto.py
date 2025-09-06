@@ -90,7 +90,7 @@ def main_trigger(p, h, y):  # assuming nominal deployment at max. altitude allow
 
 Pluto.add_parachute(
     name="main",
-    cd_s=14.612,
+    cd_s=29.128,
     trigger=main_trigger,
     sampling_rate=100,
     lag=0,
@@ -99,7 +99,7 @@ Pluto.add_parachute(
 # add reefing to main parachute with a drogue
 Pluto.add_parachute(
     name="drogue",
-    cd_s=0.98,
+    cd_s=1.05,
     trigger=drogue_trigger,
     sampling_rate=100,
     lag=2,
@@ -149,8 +149,8 @@ if __name__ == "__main__":
         name="Flight_Drogue_Only",
     )
 
-    #Flight_Normal.all_info()
+    Flight_Normal.all_info()
 
     #Uncomment to see flight with only drogue
-    Flight_Drogue_Only.all_info()
+    #Flight_Drogue_Only.all_info()
     Pluto.draw()
