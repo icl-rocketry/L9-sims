@@ -7,7 +7,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 os.chdir("..")
 
-# Import necessary modules
+# modules
 from rocketpy import Environment, Flight, MonteCarlo, GenericMotor
 from rocketpy.stochastic import (
     StochasticEnvironment,
@@ -16,7 +16,7 @@ from rocketpy.stochastic import (
     StochasticNoseCone,
     StochasticTail,
     StochasticTrapezoidalFins,
-    StochasticParachute, # New import for stochastic parachutes
+    StochasticParachute,
 )
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33,39 +33,39 @@ envtime = datetime.date.today()
 env.set_date((envtime.year, envtime.month, envtime.day, 12))
 env.set_atmospheric_model(
     type="custom_atmosphere",
-    wind_u=[[0, 0], [5000, 0]],
-    wind_v=[[0, 8], [5000, 12]],
+        pressure=None,
+        temperature=None,
+        # break down 8.7m/s in a 133 degree angle for maximum drift possible
+        wind_u=[(0, 6.36), (10000, 6.36)],  # component in x direction
+        wind_v=[(0, -5.93), (10000, -5.93)],  # component in y direction
 )
 
 # Stochastic environment (wind variability)
 stochastic_env = StochasticEnvironment(
     environment=env,
-    wind_velocity_x_factor=(1, 0.1),
-    wind_velocity_y_factor=(1, 0.1),
+    wind_velocity_x_factor=(1, 0.1),  # 10% variability in wind x component
+    wind_velocity_y_factor=(1, 0.1),  # 10% variability in wind y component
 )
 
 # --------------------------------------------------------------------------------------
 # Define the nominal flight for the Monte Carlo simulation
-# The terminate_on_apogee parameter is set to False to simulate the full flight
-# including the descent.
 nominal_flight = Flight(
     rocket=Pluto,
     environment=env,
     rail_length=12,
     inclination=84,
     heading=133,
-    terminate_on_apogee=False,  # This is the key change for a single flight
+    terminate_on_apogee=False,
     name="Pluto_Full_Flight",
 )
 
 # --------------------------------------------------------------------------------------
 # Stochastic Rockets
-# A single stochastic rocket is needed as the flight is continuous.
 stochastic_Pluto = StochasticRocket(
     rocket=Pluto,
     radius=0.095 / 2000,
     mass=(56.842, 1, "normal"),
-    inertia_11=(71.5, 0.01),
+    inertia_11=(71.5, 1.26, "normal"),
     inertia_22=0.01,
     inertia_33=0.01,
 )
@@ -134,11 +134,11 @@ drogue_parachute = nominal_flight.rocket.add_parachute(
 
 stochastic_main_parachute = StochasticParachute(
     parachute=main_parachute,
-    cd_s=(29.128, 2.9128),  # Example uncertainty: 10% standard deviation
+    cd_s=(29.128, 2.9128),  # 10% standard deviation
 )
 stochastic_drogue_parachute = StochasticParachute(
     parachute=drogue_parachute,
-    cd_s=(1.05, 0.105),  # Example uncertainty: 10% standard deviation
+    cd_s=(1.05, 0.105),  # 10% standard deviation
 )
 
 stochastic_Pluto.add_parachute(stochastic_main_parachute)
@@ -154,7 +154,7 @@ stochastic_flight = StochasticFlight(
 
 # --------------------------------------------------------------------------------------
 # Monte Carlo Simulations
-numberOfSims = 100
+numberOfSims = 60
 
 test_dispersion = MonteCarlo(
     filename="pluto_full_flight",
@@ -165,10 +165,8 @@ test_dispersion = MonteCarlo(
 test_dispersion.simulate(number_of_simulations=numberOfSims, append=True)
 
 # --------------------------------------------------------------------------------------
-# Post-processing Monte Carlo Dispersion Results
+# Post-processing Monte Carlo
 dispersion_results = test_dispersion.results
-
-# find the number of simulations from the length of one of the result lists.
 N = len(dispersion_results.get("apogee_time", []))
 print(f"Number of simulations processed: {N}")
 
@@ -211,7 +209,7 @@ plt.ylabel("Number of Occurences")
 plt.show()
 
 print("\nApogee Altitude")
-# CORRECTED KEY: 'apogee_altitude' -> 'apogee'
+
 print(
     f"Apogee Altitude -         Mean Value: {np.mean(dispersion_results['apogee']):0.3f} m")
 print(
@@ -275,7 +273,6 @@ plt.ylabel("Number of Occurences")
 plt.show()
 
 print("\nImpact Y Position")
-# CORRECTED KEY: 'impact_y' -> 'y_impact'
 print(
     f"Impact Y Position -         Mean Value: {np.mean(dispersion_results['y_impact']):0.3f} m")
 print(
@@ -295,105 +292,10 @@ print(
 plt.figure()
 plt.hist(dispersion_results["impact_velocity"], bins=int(N**0.5) if N > 0 else 1)
 plt.title("Impact Velocity")
-# plt.xlim(-35, 0) # Commenting out to let matplotlib decide the limits
+
 plt.xlabel("Velocity (m/s)")
 plt.ylabel("Number of Occurences")
 plt.show()
-
-print("\nStatic Margin")
-# CORRECTED KEYS for static -> stability
-print(
-    f"Initial Static Margin -             Mean Value: {np.mean(dispersion_results['initial_stability_margin']):0.3f} c")
-print(
-    f"Initial Static Margin -     Standard Deviation: {np.std(dispersion_results['initial_stability_margin']):0.3f} c")
-print(
-    f"Out of Rail Static Margin -         Mean Value: {np.mean(dispersion_results['out_of_rail_stability_margin']):0.3f} c")
-print(
-    f"Out of Rail Static Margin - Standard Deviation: {np.std(dispersion_results['out_of_rail_stability_margin']):0.3f} c")
-
-# The key 'final_static_margin' is not available in the results, so this part is commented out.
-# print(
-#     f"Final Static Margin -               Mean Value: {np.mean(dispersion_results['final_static_margin']):0.3f} c")
-# print(
-#     f"Final Static Margin -       Standard Deviation: {np.std(dispersion_results['final_static_margin']):0.3f} c")
-plt.figure()
-plt.hist(dispersion_results["initial_stability_margin"], label="Initial", bins=int(N**0.5) if N > 0 else 1)
-plt.hist(
-    dispersion_results["out_of_rail_stability_margin"],
-    label="Out of Rail",
-    bins=int(N**0.5) if N > 0 else 1,)
-# The key 'final_static_margin' is not available, so its histogram is also commented out.
-# plt.hist(dispersion_results["final_static_margin"], label="Final", bins=int(N**0.5))
-plt.legend()
-plt.title("Static Margin")
-plt.xlabel("Static Margin (c)")
-plt.ylabel("Number of Occurences")
-plt.show()
-
-
-# --- THE FOLLOWING SECTIONS ARE COMMENTED OUT AS THEIR KEYS ARE NOT IN THE RESULTS ---
-# You can delete these blocks or keep them for future reference.
-
-# print("\nMaximum Velocity")
-# # Key 'max_velocity' not found. 'max_mach_number' is available if you wish to plot that instead.
-# print(
-#     f"Maximum Velocity -         Mean Value: {np.mean(dispersion_results['max_velocity']):0.3f} m/s")
-# print(
-#     f"Maximum Velocity - Standard Deviation: {np.std(dispersion_results['max_velocity']):0.3f} m/s")
-# plt.figure()
-# plt.hist(dispersion_results["max_velocity"], bins=int(N**0.5))
-# plt.title("Maximum Velocity")
-# plt.xlabel("Velocity (m/s)")
-# plt.ylabel("Number of Occurences")
-# plt.show()
-
-# print("\nNumber of Parachute Events")
-# # Key 'number_of_events' not found.
-# plt.figure()
-# plt.hist(dispersion_results["number_of_events"])
-# plt.title("Parachute Events")
-# plt.xlabel("Number of Parachute Events")
-# plt.ylabel("Number of Occurences")
-# plt.show()
-
-# print("\nDrogue Parachute Trigger Time")
-# # Key 'drogue_triggerTime' not found.
-# print(
-#     f"Drogue Parachute Trigger Time -         Mean Value: {np.mean(dispersion_results['drogue_triggerTime']):0.3f} s")
-# print(
-#     f"Drogue Parachute Trigger Time - Standard Deviation: {np.std(dispersion_results['drogue_triggerTime']):0.3f} s")
-# plt.figure()
-# plt.hist(dispersion_results["drogue_triggerTime"], bins=int(N**0.5))
-# plt.title("Drogue Parachute Trigger Time")
-# plt.xlabel("Time (s)")
-# plt.ylabel("Number of Occurences")
-# plt.show()
-
-# print("\nDrogue Parachute Fully Inflated Time")
-# # Key 'drogue_inflated_time' not found.
-# print(
-#     f"Drogue Parachute Fully Inflated Time -         Mean Value: {np.mean(dispersion_results['drogue_inflated_time']):0.3f} s")
-# print(
-#     f"Drogue Parachute Fully Inflated Time - Standard Deviation: {np.std(dispersion_results['drogue_inflated_time']):0.3f} s")
-# plt.figure()
-# plt.hist(dispersion_results["drogue_inflated_time"], bins=int(N**0.5))
-# plt.title("Drogue Parachute Fully Inflated Time")
-# plt.xlabel("Time (s)")
-# plt.ylabel("Number of Occurences")
-# plt.show()
-
-# print("\nDrogue Parachute Fully Inflated Velocity")
-# # Key 'drogue_inflated_velocity' not found.
-# print(
-#     f"Drogue Parachute Fully Inflated Velocity -         Mean Value: {np.mean(dispersion_results['drogue_inflated_velocity']):0.3f} m/s")
-# print(
-#     f"Drogue Parachute Fully Inflated Velocity - Standard Deviation: {np.std(dispersion_results['drogue_inflated_velocity']):0.3f} m/s")
-# plt.figure()
-# plt.hist(dispersion_results["drogue_inflated_velocity"], bins=int(N**0.5))
-# plt.title("Drogue Parachute Fully Inflated Velocity")
-# plt.xlabel("Velocity m/s)")
-# plt.ylabel("Number of Occurences")
-# plt.show()
 
 # --------------------------------------------------------------------------------------
 # Error Ellipses
