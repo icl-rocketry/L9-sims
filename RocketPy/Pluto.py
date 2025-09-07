@@ -22,8 +22,8 @@ Pluto = Rocket(
     radius=0.095,
     mass=56.842,  # mass is excluding fuel, ox and nitrous
     inertia=(71.5, 71.5, 0.25),
-    power_off_drag="RocketPy/dragCurve.csv",
-    power_on_drag="RocketPy/dragCurve.csv",
+    power_off_drag="RocketPy/cd.csv",
+    power_on_drag="RocketPy/cd.csv",
     center_of_mass_without_motor=length - 2.61,
     coordinate_system_orientation="tail_to_nose",
 )
@@ -32,8 +32,8 @@ Pluto_Drogue_Only = Rocket(
     radius=0.095,
     mass=56.842,  # mass is excluding fuel, ox and nitrous
     inertia=(71.5, 71.5, 0.25),
-    power_off_drag="RocketPy/dragCurve.csv",
-    power_on_drag="RocketPy/dragCurve.csv",
+    power_off_drag="RocketPy/cd.csv",
+    power_on_drag="RocketPy/cd.csv",
     center_of_mass_without_motor=length - 2.61,
     coordinate_system_orientation="tail_to_nose",
 )
