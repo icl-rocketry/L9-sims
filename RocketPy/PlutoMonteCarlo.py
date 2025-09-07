@@ -34,7 +34,7 @@ env.set_date((envtime.year, envtime.month, envtime.day, 12))
 env.set_atmospheric_model(
     type="custom_atmosphere",
     wind_u=[[0, 0], [5000, 0]],
-    wind_v=[[0, 4], [5000, 12]],
+    wind_v=[[0, 8], [5000, 12]],
 )
 
 # Stochastic environment (wind variability)
@@ -43,7 +43,6 @@ stochastic_env = StochasticEnvironment(
     wind_velocity_x_factor=(1, 0.1),
     wind_velocity_y_factor=(1, 0.1),
 )
-# stochastic_env.visualize_attributes() # You can uncomment this if you want to see the attributes again
 
 # --------------------------------------------------------------------------------------
 # Define the nominal flight for the Monte Carlo simulation
@@ -57,9 +56,6 @@ nominal_flight = Flight(
     heading=133,
     terminate_on_apogee=False,  # This is the key change for a single flight
     name="Pluto_Full_Flight",
-    max_time_step=0.01,
-    rtol=1e-4,
-    atol=1e-5,
 )
 
 # --------------------------------------------------------------------------------------
@@ -103,7 +99,7 @@ GenericKerberos = GenericMotor(
     chamber_position=1,
     propellant_initial_mass=16.06 + 5.35,
     nozzle_radius=0.025,
-    dry_mass=0.001,  # Updated to 1 gram to avoid numerical issues
+    dry_mass=0.01,  # to avoid numerical issues
     center_of_dry_mass_position=1.0824,
     dry_inertia=(0.001, 0.001, 0.001),  # Updated to very small non-zero values
     nozzle_position=0,
@@ -166,20 +162,15 @@ test_dispersion = MonteCarlo(
     rocket=stochastic_Pluto,
     flight=stochastic_flight,
 )
-test_dispersion.simulate(number_of_simulations=numberOfSims, append=False)
+test_dispersion.simulate(number_of_simulations=numberOfSims, append=True)
 
 # --------------------------------------------------------------------------------------
 # Post-processing Monte Carlo Dispersion Results
 dispersion_results = test_dispersion.results
 
-# We find the number of simulations from the length of one of the result lists.
+# find the number of simulations from the length of one of the result lists.
 N = len(dispersion_results.get("apogee_time", []))
 print(f"Number of simulations processed: {N}")
-
-# You can remove this debugging printout if you wish
-print("\n--- Available Keys in Results ---")
-print(list(dispersion_results.keys()))
-print("---------------------------------\n")
 
 # --------------------------------------------------------------------------------------
 # Dispersion Results
