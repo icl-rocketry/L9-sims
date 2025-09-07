@@ -35,16 +35,16 @@ env.set_atmospheric_model(
     type="custom_atmosphere",
         pressure=None,
         temperature=None,
-        # break down 8.7m/s in a 133 degree angle for maximum drift possible
-        wind_u=[(0, 6.36), (10000, 6.36)],  # component in x direction
-        wind_v=[(0, -5.93), (10000, -5.93)],  # component in y direction
+        # break down 6m/s in a 150 degree angle for average wind in the area
+        wind_u=[(0, 3.0), (10000, -3.0)],
+        wind_v=[(0, -5.2), (10000, 5.2)],    
 )
 
 # Stochastic environment (wind variability)
 stochastic_env = StochasticEnvironment(
     environment=env,
-    wind_velocity_x_factor=(1, 0.1),  # 10% variability in wind x component
-    wind_velocity_y_factor=(1, 0.1),  # 10% variability in wind y component
+    wind_velocity_x_factor=(1, 0.2),  # 10% variability in wind x component
+    wind_velocity_y_factor=(1, 0.2),  # 10% variability in wind y component
 )
 
 # --------------------------------------------------------------------------------------
@@ -154,7 +154,7 @@ stochastic_flight = StochasticFlight(
 
 # --------------------------------------------------------------------------------------
 # Monte Carlo Simulations
-numberOfSims = 60
+numberOfSims = 90 # run in batches of 10 until we have enough data
 
 test_dispersion = MonteCarlo(
     filename="pluto_full_flight",

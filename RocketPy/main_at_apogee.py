@@ -84,34 +84,12 @@ def drogue_trigger(p, h, y):  # deploy at apogee (lag is taken into account late
     return True if y[5] < 0 else False
 
 
-def main_trigger(p, h, y):  # assuming nominal deployment at max. altitude allowed (-> max drift)
-    return True if y[5] < 0 and h < 450 else False
-
-
 Pluto.add_parachute(
     name="main",
     cd_s=29.128,
-    trigger=main_trigger,
+    trigger=drogue_trigger,
     sampling_rate=100,
     lag=0,
-    noise=(0, 0, 0),
-)
-# add reefing to main parachute with a drogue
-Pluto.add_parachute(
-    name="drogue",
-    cd_s=1.05,
-    trigger=drogue_trigger,
-    sampling_rate=100,
-    lag=2,
-    noise=(0, 0, 0),
-)
-
-Pluto_Drogue_Only.add_parachute(
-    name="only_drogue",
-    cd_s=0.98,
-    trigger=drogue_trigger,
-    sampling_rate=100,
-    lag=2,
     noise=(0, 0, 0),
 )
 
@@ -137,6 +115,7 @@ if __name__ == "__main__":
         heading=133,
         terminate_on_apogee=False,
         name="Flight",
+        max_time=6000,
     )
 
     Flight_Drogue_Only = Flight(
@@ -149,8 +128,6 @@ if __name__ == "__main__":
         name="Flight_Drogue_Only",
     )
 
-    #Flight_Normal.all_info()
+    Flight_Normal.all_info()
 
-    #Uncomment to see flight with only drogue
-    Flight_Drogue_Only.all_info()
     Pluto.draw()
