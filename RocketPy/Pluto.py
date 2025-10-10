@@ -163,7 +163,7 @@ if __name__ == "__main__":
         type="custom_atmosphere",
         pressure=None,
         temperature=None,
-        # break down 8.7m/s in a 133 degree angle
+        # break down 8.7m/s in a 144 degree angle
         wind_u=[(0, 6.36), (10000, 6.36)],  # component in x direction
         wind_v=[(0, -5.93), (10000, -5.93)],  # component in y direction
     )
@@ -174,7 +174,7 @@ if __name__ == "__main__":
         environment=env,
         rail_length=12,
         inclination=84,
-        heading=133,
+        heading=144,
         terminate_on_apogee=True,
         name="Ascent",
     )
@@ -183,7 +183,7 @@ if __name__ == "__main__":
         environment=env,
         rail_length=0.01,  # this doesnt make a difference as it starts off the rail
         inclination=0,
-        heading=133,
+        heading=144,
         initial_solution=Ascent,
         name="Descent Pre-Deployment",
         max_time=164,  # limit the descent time to 100 seconds so that payload deploys at 2km
@@ -194,7 +194,7 @@ if __name__ == "__main__":
         environment=env,
         rail_length=0.01,  # this doesnt make a difference as it starts off the rail
         inclination=0,
-        heading=133,
+        heading=144,
         initial_solution=Descent1,
         name="Descent Post-Deployment",
     )
@@ -203,7 +203,7 @@ if __name__ == "__main__":
         environment=env,
         rail_length=0.01,  # this doesnt make a difference as it starts off the rail
         inclination=0,
-        heading=133,
+        heading=144,
         initial_solution=Ascent,
         name="Payload",
     )
