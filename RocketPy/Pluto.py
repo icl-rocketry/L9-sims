@@ -177,18 +177,9 @@ if __name__ == "__main__":
         initial_solution=Descent1,
         name="Descent Post-Deployment",
     )
-    PayloadDescent = Flight(
-        rocket=Payload,
-        environment=env,
-        rail_length=0.01,  # this doesnt make a difference as it starts off the rail
-        inclination=0,
-        heading=144,
-        initial_solution=Ascent,
-        name="Payload",
-    )
-
+    
     # compare all 3 trajectories
-    comparison = CompareFlights([Ascent, Descent1, Descent2, PayloadDescent])
+    comparison = CompareFlights([Ascent, Descent1, Descent2])
     comparison.trajectories_3d(legend=True)
 
     # all the graphs (uncomment to see)
@@ -208,5 +199,3 @@ if __name__ == "__main__":
     Descent1.info()
     print("---------- DESCENT POST-DEPLOYMENT INFO ----------")
     Descent2.info()
-    print("---------- PAYLOAD INFO ----------")
-    PayloadDescent.info()
