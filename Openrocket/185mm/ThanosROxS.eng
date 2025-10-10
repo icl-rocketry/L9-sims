@@ -1,9 +1,9 @@
 ; @File: HYP1.eng, @Pts-I: 3, @Pts-O: 3, @Sm: 0, @CO: 5%
 ; @TI: 13248.75, @TIa: 13248.12, @TIe: 0.0%, @ThMax: 2000.0, @ThAvg: 1903.009, @Tb: 6.962
 ; Exported using ThrustCurveTool, www.ThrustGear.com
-RLOxS 185 841 4-6-8 16.06 16.06 ICLR
+RLOxS 190.5 841 4-6-8 16.06 16.06 ICLR
 0.00        0.00
 0.50   	    0.01
-7.40        0.01
-7.95        0.0
+6.75        0.01
+7.25        0.0
 
