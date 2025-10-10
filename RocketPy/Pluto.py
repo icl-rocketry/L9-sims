@@ -144,7 +144,7 @@ if __name__ == "__main__":
         environment=env,
         rail_length=12,
         inclination=84,
-        heading=133,
+        heading=144,
         terminate_on_apogee=False,
         name="Flight_Drogue_Only",
     )
