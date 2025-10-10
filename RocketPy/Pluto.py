@@ -45,18 +45,7 @@ PlutoDescentPreDeployment = Rocket(
 # descent rocket without payload
 PlutoDescentPostDeployment = Rocket(
     radius=0.01,  # its not a cylinder but is a good enough approximation as we give I and m separately
-    mass=56.471 - 3.229,  # minus payload mass
-    inertia=(0.0216, 0.0215, 0.00437),
-    power_off_drag="RocketPy/dragCurve.csv",  # we dont have the drag of the payload yet but its always under chute so doesnt matter
-    power_on_drag="RocketPy/dragCurve.csv",
-    center_of_mass_without_motor=0.01,
-    coordinate_system_orientation="tail_to_nose",
-)
-
-# payload deployed
-Payload = Rocket(
-    radius=0.01,  # its not a cylinder but is a good enough approximation as we give I and m separately
-    mass=3.229,
+    mass=56.471,  # no payload mass
     inertia=(0.0216, 0.0215, 0.00437),
     power_off_drag="RocketPy/dragCurve.csv",  # we dont have the drag of the payload yet but its always under chute so doesnt matter
     power_on_drag="RocketPy/dragCurve.csv",
@@ -144,16 +133,6 @@ PlutoDescentPostDeployment.add_parachute(
     lag=0,  # chute remains open when payload deploys
     noise=(0, 0, 0),
 )
-# payload chute is parafoil in vertical descent. Control sims will be in the technical report
-Payload.add_parachute(
-    name="parafoil",
-    cd_s=0.4 * 0.562,  # parafoil
-    trigger=payload_trigger,
-    sampling_rate=100,
-    lag=0,
-    noise=(0, 0, 0),
-)
-
 
 if __name__ == "__main__":
 
