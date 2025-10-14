@@ -54,7 +54,7 @@ nominal_flight = Flight(
     environment=env,
     rail_length=12,
     inclination=84,
-    heading=133,
+    heading=144,
     terminate_on_apogee=False,
     name="Pluto_Full_Flight",
 )
@@ -149,7 +149,7 @@ stochastic_Pluto.add_parachute(stochastic_drogue_parachute)
 stochastic_flight = StochasticFlight(
     flight=nominal_flight,
     inclination=(84, 0.5),
-    heading=(133, 1),
+    heading=(144, 1),
 )
 
 # --------------------------------------------------------------------------------------

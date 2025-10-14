@@ -149,8 +149,9 @@ if __name__ == "__main__":
         name="Flight_Drogue_Only",
     )
 
-    #Flight_Normal.all_info()
+    Flight_Normal.all_info()
 
     #Uncomment to see flight with only drogue
-    Flight_Drogue_Only.all_info()
+    #Flight_Drogue_Only.all_info()
     Pluto.draw()
+    Kerberos.all_info()
